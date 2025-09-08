@@ -14,15 +14,6 @@ def choix_couleur():
 
 
 
-
-def fenetre_barres(x,y,largeur,couleur_barres,hauteur):
-    #les bandes verticales, entre les bandes, penser à ajouter 
-    largeur_barre = largeur/10
-    ecart_barres = formes.divise_coord(largeur,3)
-    b1=formes.Rectangle(x+(ecart_barres-largeur_barre/2),y,largeur_barre,hauteur)
-    b1.dessine().colorier_rectangle(couleur_barres)
-    b2=formes.Rectangle(x+(ecart_barres*2-largeur_barre/2),y,largeur_barre,hauteur)  #on a crée les barres, mtn il faut créer les fenêtres
-    b2.dessine().colorier_rectangle(couleur_barres)
     
 
 class fenetres:
@@ -34,6 +25,21 @@ class fenetres:
         self.typefenetres= random.randint(1,3)
         self.couleurs = couleurs
 
-        
+    def dessine(self):
+        pass
 
+    def fenetre_barres(self,couleur_barres):
+        #les bandes verticales, entre les bandes, penser à ajouter 
+        largeur_barre = self.largeurbd/10
+        ecart_barres = formes.divise_coord(self.largeurbd,3)
+        b1=formes.Rectangle(self.x+(ecart_barres-largeur_barre/2),self.y,largeur_barre,self.largeurbd)
+        b1.dessine().colorier_rectangle(couleur_barres)
+        b2=formes.Rectangle(self.x+(ecart_barres*2-largeur_barre/2),self.y,largeur_barre,self.hauteurbd)  #on a crée les barres, mtn il faut créer les fenêtres
+        b2.dessine().colorier_rectangle(couleur_barres)
+
+    def baies_vitrees(self,couleur_baie):
+        pass
+
+    def miriade_fenetres(self,couleur_fenetres):
+        pass
     
