@@ -12,23 +12,15 @@ def choix_couleur():
     "habitation" : random.choice(["#8B3A3A","#F5E6D3","#A0522D","#A3B18A"])}
 
 
-def colorier_rectangle(x,y,couleur,largeur,hauteur):
-    turtle.penup()
-    turtle.goto(x,y)
-    turtle.pendown()
-    turtle.fillcolor(couleur)
-    turtle.beginfill()
-    for i in range(2):
-        turtle.fd(largeur)
-        turtle.right(90)
-        turtle.fd(hauteur)
-        turtle.right(90)
-    turtle.end_fill()
 
 
-def fenetre_barres(x,y,largeur,colorsList,hauteur):
+
+def fenetre_barres(x,y,largeur,couleur_barres,hauteur):
     #les bandes verticales, entre les bandes, penser à ajouter 
     largeur_barre = largeur/10
     ecart_barres = formes.divise_coord(largeur,3)
-    formes.rectangle(x+(ecart_barres-largeur_barre/2),y,largeur_barre,hauteur)
+    b1=formes.Rectangle(x+(ecart_barres-largeur_barre/2),y,largeur_barre,hauteur)
+    b1.dessine().colorier_rectangle()
+    b2=formes.Rectangle(x+(ecart_barres*2-largeur_barre/2),y,largeur_barre,hauteur)  #on a crée les barres, mtn il faut créer les fenêtres
+    b2.dessine().colorier_rectangle()
     

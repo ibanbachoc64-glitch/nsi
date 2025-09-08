@@ -1,5 +1,5 @@
 import turtle 
-
+import esthetique
 #les docstr sont faites avec l'extension autodocstr de python sur vsc
 
 def trait(xdebut,ydebut,xfin,yfin):
@@ -25,22 +25,37 @@ def carre(cote,xhaut,yhaut):
         xhaut (_type_): point de départ des abscisses, situé à gauche
         yhaut (_type_): point de départ des ordonnées, situé en haut du carré
     """
-    rectangle(xhaut,yhaut,cote,cote)
+    c = Rectangle(xhaut,yhaut,cote,cote)
+    c.dessine()
 
-def rectangle(xdebut,ydebut,largeur,hauteur):
-    """_summary_
+class Rectangle:
+    def __init__(self,xdebut,ydebut,largeur,hauteur):
+        self.xdebut = xdebut
+        self.ydebut =ydebut
+        self.largeur = largeur
+        self.hauteur = hauteur
+        cols = esthetique.choix_couleur()
+        self.couleur = cols["building"]
 
-    Args:
-        xdebut (_int_): abscisse de départ
-        ydebut (_int_): ordonnée de départ
-        largeur (_int_): largeur du rectangle
-        hauteur (_int_): hauteur voulue pour le rectangle
-    """
-    #commence dans le coin gauche du rectangle (haut)
-    trait(xdebut, ydebut, xdebut +largeur, ydebut)                
-    trait(xdebut +largeur, ydebut, xdebut+ largeur, ydebut -hauteur)  
-    trait(xdebut +largeur, ydebut- hauteur, xdebut, ydebut- hauteur)  
-    trait(xdebut, ydebut - hauteur, xdebut, ydebut) 
+    def dessine(self):
+        trait(self.xdebut, self.ydebut, self.xdebut +self.largeur, self.ydebut)                
+        trait(self.xdebut +self.largeur, self.ydebut, self.xdebut+ self.largeur, self.ydebut -self.hauteur)  
+        trait(self.xdebut +self.largeur, self.ydebut- self.hauteur, self.xdebut, self.ydebut- self.hauteur)  
+        trait(self.xdebut, self.ydebut - self.hauteur, self.xdebut, self.ydebut) 
+
+    def colorier_rectangle(self):
+        turtle.penup()
+        turtle.goto(self.xdebut,self.ydebut)
+        turtle.pendown()
+        turtle.fillcolor(self.couleur)
+        turtle.beginfill()
+        for i in range(2):
+            turtle.fd(self.largeur)
+            turtle.right(90)
+            turtle.fd(self.hauteur)
+            turtle.right(90)
+        turtle.end_fill()
+
 
 
 
