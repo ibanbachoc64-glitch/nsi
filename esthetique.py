@@ -11,10 +11,7 @@ def choix_couleur():
     "bureaux" : random.choice(["#D8D2C2","#B8A99A","#5DA9C5","#9FA6B2"]),
     "habitation" : random.choice(["#8B3A3A","#F5E6D3","#A0522D","#A3B18A"])}
 
-
-
-
-    
+  
 
 class fenetres:
     def __init__(self,largeurbd,hauteurbd,x,y,couleurs):
