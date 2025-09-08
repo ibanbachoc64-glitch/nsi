@@ -74,7 +74,3 @@ def divise_coord(val_divise,nb_divise):
     return 0
 
 
-
-if __name__==("__main__"):
-    carre(200,0,0)
-    rectangle(-200,200,200,400)
