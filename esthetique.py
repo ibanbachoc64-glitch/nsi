@@ -20,7 +20,20 @@ def fenetre_barres(x,y,largeur,couleur_barres,hauteur):
     largeur_barre = largeur/10
     ecart_barres = formes.divise_coord(largeur,3)
     b1=formes.Rectangle(x+(ecart_barres-largeur_barre/2),y,largeur_barre,hauteur)
-    b1.dessine().colorier_rectangle()
+    b1.dessine().colorier_rectangle(couleur_barres)
     b2=formes.Rectangle(x+(ecart_barres*2-largeur_barre/2),y,largeur_barre,hauteur)  #on a crée les barres, mtn il faut créer les fenêtres
-    b2.dessine().colorier_rectangle()
+    b2.dessine().colorier_rectangle(couleur_barres)
+    
+
+class fenetres:
+    def __init__(self,largeurbd,hauteurbd,x,y,couleurs):
+        self.hauteurbd=hauteurbd
+        self.largeurbd=largeurbd
+        self.x=x
+        self.y=y
+        self.typefenetres= random.randint(1,3)
+        self.couleurs = couleurs
+
+        
+
     

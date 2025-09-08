@@ -34,8 +34,6 @@ class Rectangle:
         self.ydebut =ydebut
         self.largeur = largeur
         self.hauteur = hauteur
-        cols = esthetique.choix_couleur()
-        self.couleur = cols["building"]
 
     def dessine(self):
         trait(self.xdebut, self.ydebut, self.xdebut +self.largeur, self.ydebut)                
@@ -43,11 +41,11 @@ class Rectangle:
         trait(self.xdebut +self.largeur, self.ydebut- self.hauteur, self.xdebut, self.ydebut- self.hauteur)  
         trait(self.xdebut, self.ydebut - self.hauteur, self.xdebut, self.ydebut) 
 
-    def colorier_rectangle(self):
+    def colorier_rectangle(self,couleur):
         turtle.penup()
         turtle.goto(self.xdebut,self.ydebut)
         turtle.pendown()
-        turtle.fillcolor(self.couleur)
+        turtle.fillcolor(couleur)
         turtle.beginfill()
         for i in range(2):
             turtle.fd(self.largeur)
