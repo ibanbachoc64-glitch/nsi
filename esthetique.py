@@ -32,10 +32,13 @@ class fenetres:
         #les bandes verticales, entre les bandes, penser à ajouter 
         largeur_barre = self.largeurbd/10
         ecart_barres = formes.divise_coord(self.largeurbd,3)
-        b1=formes.Rectangle(self.x+(ecart_barres-largeur_barre/2),self.y,largeur_barre,self.largeurbd)
-        b1.dessine().colorier_rectangle(couleur_barres)
-        b2=formes.Rectangle(self.x+(ecart_barres*2-largeur_barre/2),self.y,largeur_barre,self.hauteurbd)  #on a crée les barres, mtn il faut créer les fenêtres
-        b2.dessine().colorier_rectangle(couleur_barres)
+        if ecart_barres!=0:
+            b1=formes.Rectangle(self.x+(ecart_barres-largeur_barre/2),self.y,largeur_barre,self.largeurbd)
+            b1.dessine().colorier_rectangle(couleur_barres)
+            b2=formes.Rectangle(self.x+(ecart_barres*2-largeur_barre/2),self.y,largeur_barre,self.hauteurbd)  #on a crée les barres, mtn il faut créer les fenêtres
+            b2.dessine().colorier_rectangle(couleur_barres)
+        else:
+            pass #check des erreurs
 
     def baies_vitrees(self,couleur_baie):
         pass

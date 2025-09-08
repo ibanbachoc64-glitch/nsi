@@ -71,4 +71,8 @@ def divise_coord(val_divise,nb_divise):
         return val_divise/nb_divise
     return 0
 
+def nb_fenetres_vert(hauteur,taille_fenetre):
+    pass
 
+def nb_fenetres_hor(largeur,taille_fenetre):
+    pass
