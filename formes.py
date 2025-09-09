@@ -1,6 +1,17 @@
-import turtle 
+import turtle
+import random
 
-#les docstr sont faites avec l'extension autodocstr de python sur vsc
+def position(x,y):
+    '''
+    Déplace le stylo à la position (x, y) sans tracer de ligne
+    x = int
+    y = int
+    '''
+    turtle.up()
+    turtle.goto(x,y)
+    turtle.setheading(0)
+    turtle.down()
+
 
 def trait(xdebut,ydebut,xfin,yfin):
     """_summary_
@@ -17,6 +28,43 @@ def trait(xdebut,ydebut,xfin,yfin):
     crayon.pendown()
     crayon.goto(xfin,yfin)
 
+
+
+def toit1(xdebut,ydebut,largeur, hauteur):
+    """
+    Trace un triangle équilatéral sur une base de longueur x
+    x = int = longueur de la largeur du rectangle
+    REFAIRE DOCSTR
+    """
+    trait(xdebut,ydebut,xdebut + largeur ,ydebut)
+    trait(xdebut+largeur, ydebut, largeur/2, ydebut + hauteur)
+    trait(largeur/2, ydebut + hauteur, xdebut, ydebut)
+
+def toit2(x,y,largeur):
+    """
+    Trace un demi cercle de rayon largeur/2
+    x = int = x du coin superieur gauche
+    y = int = y du coin superieur gauche
+    """
+    turtle.penup()
+    turtle.goto(x,y)
+    turtle.pendown()
+    turtle.setheading(90)
+    turtle.circle(-largeur/2, 180)
+    turtle.setheading(0)
+
+
+
+def toit3(xdebut,ydebut,xfin,yfin,hauteur):
+    """
+    Trace un trapeze isocele de base x et de hauteur x/2
+    x = int = largeur du trapzez
+    """
+    trait(xdebut,ydebut,xfin,yfin)
+    trait(xfin, yfin, xdebut*(2/3),ydebut+hauteur)
+
+
+
 def carre(cote,xhaut,yhaut):
     """_summary_
 
@@ -25,7 +73,11 @@ def carre(cote,xhaut,yhaut):
         xhaut (_type_): point de départ des abscisses, situé à gauche
         yhaut (_type_): point de départ des ordonnées, situé en haut du carré
     """
-    rectangle(xhaut,yhaut,cote,cote)
+    #commence dans le coin haut gauche
+    trait(xhaut,yhaut,xhaut+cote,yhaut)
+    trait(xhaut+cote,yhaut,xhaut+cote,yhaut-cote)
+    trait(xhaut+cote,yhaut-cote,xhaut,yhaut-cote)
+    trait(xhaut,yhaut-cote,xhaut,yhaut)
 
 def rectangle(xdebut,ydebut,largeur,hauteur):
     """_summary_
@@ -37,29 +89,52 @@ def rectangle(xdebut,ydebut,largeur,hauteur):
         hauteur (_int_): hauteur voulue pour le rectangle
     """
     #commence dans le coin gauche du rectangle (haut)
-    trait(xdebut, ydebut, xdebut +largeur, ydebut)                
-    trait(xdebut +largeur, ydebut, xdebut+ largeur, ydebut -hauteur)  
-    trait(xdebut +largeur, ydebut- hauteur, xdebut, ydebut- hauteur)  
-    trait(xdebut, ydebut - hauteur, xdebut, ydebut) 
+    trait(xdebut, ydebut, xdebut +largeur, ydebut)
+    trait(xdebut +largeur, ydebut, xdebut+ largeur, ydebut -hauteur)
+    trait(xdebut +largeur, ydebut- hauteur, xdebut, ydebut- hauteur)
+    trait(xdebut, ydebut - hauteur, xdebut, ydebut)
 
 
 
-"""def grille(largeur,hauteur):
-        for i in range:
-            if largeur -10*i %i != 0:
-               nb_colonnes = i            #les -10 sont des valeurs hypothétiques, il faudra par la suite les remplacer par de vraies valeurs
-            if hauteur - 10*i %i != 0:      #les -10 correspondent à longueur barre/2
-               nb_lignes = i
-        return nb_colonnes,nb_lignes"""
-
-
-def divise_coord(val_divise,nb_divise):
-    if val_divise !=0:
-        return val_divise/nb_divise
-    return 0
 
 
 
 if __name__==("__main__"):
-    carre(200,0,0)
-    rectangle(-200,200,200,400)
+        #test toit1
+    position(-400, 300) #en haut a gauche
+    toit1(20)
+    position(-400, -300) #en bas a gauche
+    toit1(50)
+    position(300,300) #en haut a droite
+    toit1(100)
+
+    turtle.clearscreen()
+
+    #test toit2
+    position(-400, 300) #en haut a gauche
+    toit2(20)
+    position(-400, -300) #en bas a gauche
+    toit2(50)
+    position(300,300) #en haut a droite
+    toit2(100)
+
+    turtle.clearscreen()
+
+    #test rectangle
+    position(-400, 300) #en haut a gauche
+    rectangle(10,20)
+    position(-400, -300) #en bas a gauche
+    rectangle(20,40)
+    position(400,300) #en haut a droite
+    rectangle(30,60)
+
+    turtle.clearscreen()
+    #test carre
+    position(-400, 300) #en haut a gauche
+    carre(10)
+    position(-400, -300) #en bas a gauche
+    carre(20)
+    position(400,300) #en haut a droite
+    carre(30)
+
+    turtle.clearscreen()
