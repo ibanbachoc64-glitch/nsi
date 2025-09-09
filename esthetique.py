@@ -1,7 +1,6 @@
 import turtle
 import random
-import formes
-
+from formes import *
 
 
 def choix_couleur():
@@ -17,7 +16,7 @@ def colorier_rectangle(x,y,couleur,largeur,hauteur):
     turtle.goto(x,y)
     turtle.pendown()
     turtle.fillcolor(couleur)
-    turtle.beginfill()
+    turtle.begin_fill()
     for i in range(2):
         turtle.fd(largeur)
         turtle.right(90)
@@ -25,10 +24,18 @@ def colorier_rectangle(x,y,couleur,largeur,hauteur):
         turtle.right(90)
     turtle.end_fill()
 
+def choixtoit():
+    return random.randint(1,2)
 
-def fenetre_barres(x,y,largeur,colorsList,hauteur):
-    #les bandes verticales, entre les bandes, penser à ajouter 
-    largeur_barre = largeur/10
-    ecart_barres = formes.divise_coord(largeur,3)
-    formes.rectangle(x+(ecart_barres-largeur_barre/2),y,largeur_barre,hauteur)
-    
+def building(x,y):
+    largeur = random.randint(20,50)
+    hauteur = random.randint(50,100)
+    rectangle(x,y,largeur,hauteur)
+    couleur = choix_couleur()
+    if choixtoit() == 1:
+        toit1(x,y, largeur, hauteur/2)
+    elif choixtoit() == 2:
+        toit2(x,y, largeur)
+
+    colorier_rectangle(x,y,couleur['building'],largeur,hauteur)
+
