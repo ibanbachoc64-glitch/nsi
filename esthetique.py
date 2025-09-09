@@ -25,7 +25,7 @@ class fenetres:
     def dessine(self):
         pass
 
-    def fenetre_barres(self,couleur_barres):
+    def fenetre_barres(self,couleur_barres,couleur_fenetres):
         #les bandes verticales, entre les bandes, penser à ajouter 
         largeur_barre = self.largeurbd/10
         hauteur_f,largeur_f = 15,7   #je ne connais pas encore les dimensions que nous allons utiliser
@@ -39,7 +39,7 @@ class fenetres:
             x,y = self.x+ecart_barres+largeur_barre/2+demarcation+largeur_f/2, self.y - demarcation
             for i in range(nbfenvert):
                 for i in range(nbfenhor):
-                    formes.Rectangle()
+                    formes.Rectangle(x,y,largeur_f,hauteur_f).dessine().colorier_rectangle(couleur_fenetres)
         else:
             pass #check des erreurs
 
