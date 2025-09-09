@@ -34,10 +34,8 @@ class fenetres:
         nbfenvert = formes.nb_fenetres(self.hauteurbd,hauteur_f,demarcation)
         nbfenhor=formes.nb_fenetres(self.largeurbd,largeur_f,demarcation)
         if ecart_barres!=0:
-            b1=formes.Rectangle(self.x+(ecart_barres-largeur_barre/2),self.y,largeur_barre,self.largeurbd)
-            b1.dessine().colorier_rectangle(couleur_barres)
-            b2=formes.Rectangle(self.x+(ecart_barres*2-largeur_barre/2),self.y,largeur_barre,self.hauteurbd)  #on a crée les barres, mtn il faut créer les fenêtres
-            b2.dessine().colorier_rectangle(couleur_barres)
+            formes.Rectangle(self.x+(ecart_barres-largeur_barre/2),self.y,largeur_barre,self.largeurbd).dessine().colorier_rectangle(couleur_barres)
+            formes.Rectangle(self.x+(ecart_barres*2-largeur_barre/2),self.y,largeur_barre,self.hauteurbd).dessine().colorier_rectangle(couleur_barres)  #on a crée les barres, mtn il faut créer les fenêtres
             x,y = self.x+ecart_barres+largeur_barre/2+demarcation+largeur_f/2, self.y - demarcation
             for i in range(nbfenvert):
                 for i in range(nbfenhor):
