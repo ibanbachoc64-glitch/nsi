@@ -2,7 +2,9 @@ import turtle
 import random
 import formes
 
-
+def couleur_hex():
+    col = random.randrange(2,2**24)
+    return hex(col)
 
 def choix_couleur():
     return{
@@ -20,10 +22,18 @@ class fenetres:
         self.x=x
         self.y=y
         self.typefenetres= random.randint(1,3)
-        self.couleurs = couleurs
+        self.couleurs = couleurs #c'est juste la case du dictionnaire "fenetre"
 
     def dessine(self):
-        pass
+        if self.typefenetres == 1:
+            couleur1, couleur2 =couleur_hex() ,random.choice(self.couleur)  
+            self.fenetre_barres(couleur1,couleur2)
+        elif self.typefenetres==2:
+            couleur = random.choice(self.couleur)
+            self.baies_vitrees(couleur)
+        elif self.typefenetres == 3:
+            couleur = random.choice(self.couleur)
+            self.miriade_fenetres(couleur)
 
     def fenetre_barres(self,couleur_barres,couleur_fenetres):
         #les bandes verticales, entre les bandes, penser à ajouter 
