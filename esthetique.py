@@ -3,7 +3,7 @@ import formes
 import turtle
 
 def couleur_hex():
-    col = random.randrange(2,2**24)
+    col = random.randrange(2,2**24)  #https://www.geeksforgeeks.org/python/create-random-hex-color-code-using-python/
     return hex(col)
 
 def choix_couleur():
@@ -161,3 +161,4 @@ class toit3:
         self.dessine(self.hauteur/2)
 
         turtle.end_fill()
+
