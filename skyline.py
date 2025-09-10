@@ -31,18 +31,20 @@ class building:
 
 def main():
     x,y = 0,0 #changer ca plus tard
-    for i in range(5): #on crée les tours de derriere, il faudra voir combien on en met
+    n1= random.randint(5,8)
+    for i in range(n1): #on crée les tours de derriere, il faudra voir combien on en met
         couleurs = esthetique.choix_couleur()
         largeur,hauteur = random.randint(150,250),random.randint(350,550)
         building(largeur,hauteur,couleurs,x,y,"building").dessine_mur_porteurs().creation_fenetre().ajout_toit()
         x+=largeur
-    for i in range(5):
+    n2 = random.randint(7,9)
+    for i in range(n2):
         couleurs = esthetique.choix_couleur()
         largeur,hauteur = random.randint(),random.randint() #changer les valeurs
         building(largeur,hauteur,x,y,couleurs,x,y,"bureaux").dessine_mur_porteurs().creation_fenetre().ajout_toit()
         x+=largeur
-
-    for i in range(5):
+    n3 = random.randint(10,14)
+    for i in range(n3):
         couleurs = esthetique.choix_couleur()
         largeur,hauteur = random.randint(),random.randint() #changer les valeurs
         building(largeur,hauteur,x,y,couleurs,x,y,"habitation").dessine_mur_porteurs().creation_fenetre().ajout_toit()
