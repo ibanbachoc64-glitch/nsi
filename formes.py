@@ -1,5 +1,6 @@
 import turtle
 import random
+import time
 
 def position(x,y):
     '''
@@ -22,57 +23,13 @@ def trait(xdebut,ydebut,xfin,yfin):
         xfin (int): abscisse de fin du trait
         yfin (int): ordonnée de fin du trait
     """
-    crayon = turtle.Turtle()
-    crayon.penup()
-    crayon.goto(xdebut,ydebut)
-    crayon.pendown()
-    crayon.goto(xfin,yfin)
 
-
-
-def toit1(xdebut,ydebut,largeur, hauteur):
-    """
-    Trace un triangle équilatéral au coords x et y, avec une largeur et une hauteur
-    xdebut = coords x = int
-    ydebut = coordsy = int
-    largeur = largeur du triangle = int
-    hauteur = hauteur du sommet = int
-
-    """
-    trait(xdebut,ydebut,xdebut + largeur ,ydebut)
-    trait(xdebut+largeur, ydebut, xdebut + largeur/2, ydebut + hauteur)
-    trait(largeur/2, ydebut + hauteur, xdebut, ydebut)
-
-
-def toit2(x,y,largeur):
-    """
-    Trace un demi cercle de rayon largeur/2
-    x = int = x du coin superieur gauche
-    y = int = y du coin superieur gauche
-    """
     turtle.penup()
-    turtle.goto(x,y)
+    turtle.goto(xdebut,ydebut)
     turtle.pendown()
-    turtle.setheading(90)
-    turtle.circle(-largeur/2, 180)
+    turtle.goto(xfin,yfin)
 
-
-    turtle.setheading(0)
-
-
-
-
-def toit3(xdebut,ydebut,xfin,yfin,hauteur):
-    """
-    Trace un trapeze isocele de base x et de hauteur x/2
-    x = int = largeur du trapzez
-    """
-    trait(xdebut,ydebut,xfin,yfin)
-    trait(xfin, yfin, xdebut*(2/3),ydebut+hauteur)
-
-
-
-def carre(cote,xhaut,yhaut):
+def carre(xhaut,yhaut,cote):
     """_summary_
 
     Args:
@@ -102,47 +59,142 @@ def rectangle(xdebut,ydebut,largeur,hauteur):
     trait(xdebut, ydebut - hauteur, xdebut, ydebut)
 
 
+def toit1(xdebut,ydebut,largeur, hauteur):
+    """
+    Trace un triangle équilatéral au coords x et y, avec une largeur et une hauteur
+    xdebut = coords x = int
+    ydebut = coordsy = int
+    largeur = largeur du triangle = int
+    hauteur = hauteur du sommet = int
+
+    """
+    trait(xdebut,ydebut,xdebut + largeur ,ydebut)
+    trait(xdebut+largeur, ydebut, xdebut + largeur/2, ydebut + hauteur)
+    trait(xdebut+largeur/2, ydebut + hauteur, xdebut, ydebut)
+
+def toit2(x,y,largeur):
+    """
+    Trace un demi cercle de rayon largeur/2
+    x = int = x du coin superieur gauche
+    y = int = y du coin superieur gauche
+    """
+    turtle.penup()
+    turtle.goto(x,y)
+    turtle.pendown()
+    turtle.setheading(90)
+    turtle.circle(-largeur/2, 180)
+
+
+    turtle.setheading(0)
+
+
+
+
+def toit3(x_base, y_base, largeur, hauteur):
+
+    nombre_marches =  4
+    largeur_marche = largeur / (nombre_marches * 2)
+    hauteur_marche = hauteur / nombre_marches
+
+
+    x = x_base
+    y = y_base
+
+    #on monte a gauche
+    for i in range(nombre_marches):
+
+        trait(x, y, x + largeur_marche, y)
+        x += largeur_marche
+
+        trait(x, y, x, y + hauteur_marche)
+        y += hauteur_marche
+
+    #on descend a droite
+    for i in range(nombre_marches):
+
+        trait(x, y, x, y - hauteur_marche)
+        y -= hauteur_marche
+
+        trait(x, y, x + largeur_marche, y)
+        x += largeur_marche
+
+
+
+
 
 
 
 
 if __name__==("__main__"):
-        #test toit1
-    position(-400, 300) #en haut a gauche
-    toit1(20)
-    position(-400, -300) #en bas a gauche
-    toit1(50)
-    position(300,300) #en haut a droite
-    toit1(100)
+    #test toit1
 
+
+    #en haut a gauche
+    toit1(-400,200,50,25)
+
+    #en bas a gauche
+    toit1(-400,-200,100,50)
+
+    #en haut a droite
+    toit1(400,200,150,100)
+
+    time.sleep(2)
     turtle.clearscreen()
 
     #test toit2
-    position(-400, 300) #en haut a gauche
-    toit2(20)
-    position(-400, -300) #en bas a gauche
-    toit2(50)
-    position(300,300) #en haut a droite
-    toit2(100)
 
+
+    #en haut a gauche
+    toit2(-400,200,50)
+
+    #en bas a gauche
+    toit2(-400,-200,100)
+
+    #en haut a droite
+    toit2(400,200,150)
+
+    time.sleep(2)
     turtle.clearscreen()
+
+
+
+    #test toit3
+
+    #en haut a gauche
+    toit3(-400,200,50,25)
+
+    #en bas a gauche
+    toit3(-400,-200,100,50)
+
+    #en haut a droite
+    toit3(400,200,150,100)
+
+    time.sleep(2)
+    turtle.clearscreen()
+
 
     #test rectangle
-    position(-400, 300) #en haut a gauche
-    rectangle(10,20)
-    position(-400, -300) #en bas a gauche
-    rectangle(20,40)
-    position(400,300) #en haut a droite
-    rectangle(30,60)
 
+    #en haut a gauche
+    rectangle(-400,200,50,25)
+
+    #en bas a gauche
+    rectangle(-400,-200,100,50)
+
+    #en haut a droite
+    rectangle(400,200,150,100)
+
+    time.sleep(2)
     turtle.clearscreen()
     #test carre
-    position(-400, 300) #en haut a gauche
-    carre(10)
-    position(-400, -300) #en bas a gauche
-    carre(20)
-    position(400,300) #en haut a droite
-    carre(30)
 
-    turtle.clearscreen()
+    #en haut a gauche
+    carre(-400,200,50)
+
+    #en bas a gauche
+    carre(-400,-200,100)
+
+    #en haut a droite
+    carre(400,200,150)
+
 
