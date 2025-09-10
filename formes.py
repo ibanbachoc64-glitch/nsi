@@ -1,5 +1,4 @@
 import turtle 
-import esthetique
 #les docstr sont faites avec l'extension autodocstr de python sur vsc
 
 def trait(xdebut,ydebut,xfin,yfin):
@@ -25,8 +24,8 @@ def carre(cote,xhaut,yhaut):
         xhaut (_type_): point de départ des abscisses, situé à gauche
         yhaut (_type_): point de départ des ordonnées, situé en haut du carré
     """
-    c = Rectangle(xhaut,yhaut,cote,cote)
-    c.dessine()
+    Rectangle(xhaut,yhaut,cote,cote).dessine()
+
 
 class Rectangle:
     def __init__(self,xdebut,ydebut,largeur,hauteur):
@@ -39,9 +38,10 @@ class Rectangle:
         trait(self.xdebut, self.ydebut, self.xdebut +self.largeur, self.ydebut)                
         trait(self.xdebut +self.largeur, self.ydebut, self.xdebut+ self.largeur, self.ydebut -self.hauteur)  
         trait(self.xdebut +self.largeur, self.ydebut- self.hauteur, self.xdebut, self.ydebut- self.hauteur)  
-        trait(self.xdebut, self.ydebut - self.hauteur, self.xdebut, self.ydebut) 
+        trait(self.xdebut, self.ydebut - self.hauteur, self.xdebut, self.ydebut)
+        return self
 
-    def colorier_rectangle(self,couleur):
+    def colorier(self,couleur):
         turtle.penup()
         turtle.goto(self.xdebut,self.ydebut)
         turtle.pendown()
@@ -75,3 +75,4 @@ def nb_fenetres(val,taille_fenetre,ecart):
     v = val/taille_fenetre
     return val/v*ecart
 
+Rectangle(0,0,100,200).dessine()

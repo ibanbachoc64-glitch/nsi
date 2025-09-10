@@ -34,25 +34,32 @@ class fenetres:
         nbfenvert = formes.nb_fenetres(self.hauteurbd,hauteur_f,demarcation)
         nbfenhor=formes.nb_fenetres(self.largeurbd,largeur_f,demarcation)
         if ecart_barres!=0:
-            formes.Rectangle(self.x+(ecart_barres-largeur_barre/2),self.y,largeur_barre,self.largeurbd).dessine().colorier_rectangle(couleur_barres)
-            formes.Rectangle(self.x+(ecart_barres*2-largeur_barre/2),self.y,largeur_barre,self.hauteurbd).dessine().colorier_rectangle(couleur_barres)  #on a crée les barres, mtn il faut créer les fenêtres
+            formes.Rectangle(self.x+(ecart_barres-largeur_barre/2),self.y,largeur_barre,self.largeurbd).dessine().colorier(couleur_barres)
+            formes.Rectangle(self.x+(ecart_barres*2-largeur_barre/2),self.y,largeur_barre,self.hauteurbd).dessine().colorier(couleur_barres)  #on a crée les barres, mtn il faut créer les fenêtres
             x,y = self.x+ecart_barres+largeur_barre/2+demarcation+largeur_f/2, self.y - demarcation
             for i in range(nbfenvert):
-                for i in range(nbfenhor):
-                    formes.Rectangle(x,y,largeur_f,hauteur_f).dessine().colorier_rectangle(couleur_fenetres)
+                for j in range(nbfenhor):
+                    formes.Rectangle(x,y,largeur_f,hauteur_f).dessine().colorier(couleur_fenetres)
                     x+=demarcation
                 y-=hauteur_f+demarcation #a chaque fois que l'on a rempli une ligne, on descend de la hauteur de la fenetre+demarcation
         else:
             pass #check des erreurs
 
     def baies_vitrees(self,couleur_baie):
-        hauteur_f,largeur_f = self.hauteurbd/25,(6/8)*self.largeurbd
+        hauteur_f,largeur_f = self.largeurbd/25,(6/8)*self.largeurbd
         joint = hauteur_f/5
         nbfen = formes.nb_fenetres(self.hauteurbd,hauteur_f,joint)
         y= self.hauteurbd-joint
         for i in range(nbfen):
-            formes.Rectangle(self.x+(self.largeurbd/2)-largeur_f,y,largeur_f,hauteur_f).dessine().colorier_rectangle(couleur_baie)
+            formes.Rectangle(self.x+(self.largeurbd/2)-largeur_f,y,largeur_f,hauteur_f).dessine().colorier(couleur_baie)
             y-= hauteur_f+joint
     def miriade_fenetres(self,couleur_fenetres):
-        pass
+        h,l = self.largeurbd/75,self.largeurbd/100
+        demarc_hor,demarc_vert = l/5,h/5
+        nbfenhor = formes.nb_fenetres(self.largeur,l,demarc_hor)
+        nbfen_vert = formes.nb_fenetres(self.hauteur,h,demarc_vert)
+        x,y = self.x+demarc_hor+(l/2),self.y-demarc_vert
+        for i in range(nbfen_vert):
+            for j in range(nbfenhor):
+                formes.Rectangle(x,y,l,h).dessine().colorier()
     
