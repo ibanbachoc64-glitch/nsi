@@ -7,7 +7,7 @@ class building:
         self.largeur = largeur
         self.hauteur = hauteur
         self.couleur = couleur
-        self.x = x #coin supérieur gquche
+        self.x = x #coin supérieur gauche
         self.y = y
      
     
@@ -29,12 +29,8 @@ class building:
             esthetique.toit3(self.x,self.y,self.hauteur,self.largeur,self.couleur["toits"])
 
 def main():
-    x = 0
+    x,y = 0,0 #changer ca plus tard
     for i in range(5): #on crée les tours de derriere, il faudra voir combien on en met
         couleurs = esthetique.choix_couleur()
-        largeur,hauteur = random.randint(100,200),random.randint(400,500) #il faudra changer ces valeurs
-        y = hauteur
-        b = building(largeur,hauteur,couleurs[0],x,y)
-        b.dessine_mur_porteurs()
-        b.peinture_murs()
-        b.creation_fenetre()
+        largeur,hauteur = random.randint(150,250),random.randint(350,550)
+        building(largeur,hauteur,couleurs,x,y).dessine_mur_porteurs().creation_fenetre().ajout_toit()
