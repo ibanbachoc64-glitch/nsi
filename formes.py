@@ -32,13 +32,17 @@ def trait(xdebut,ydebut,xfin,yfin):
 
 def toit1(xdebut,ydebut,largeur, hauteur):
     """
-    Trace un triangle équilatéral sur une base de longueur x
-    x = int = longueur de la largeur du rectangle
-    REFAIRE DOCSTR
+    Trace un triangle équilatéral au coords x et y, avec une largeur et une hauteur
+    xdebut = coords x = int
+    ydebut = coordsy = int
+    largeur = largeur du triangle = int
+    hauteur = hauteur du sommet = int
+
     """
     trait(xdebut,ydebut,xdebut + largeur ,ydebut)
-    trait(xdebut+largeur, ydebut, largeur/2, ydebut + hauteur)
+    trait(xdebut+largeur, ydebut, xdebut + largeur/2, ydebut + hauteur)
     trait(largeur/2, ydebut + hauteur, xdebut, ydebut)
+
 
 def toit2(x,y,largeur):
     """
@@ -51,7 +55,10 @@ def toit2(x,y,largeur):
     turtle.pendown()
     turtle.setheading(90)
     turtle.circle(-largeur/2, 180)
+
+
     turtle.setheading(0)
+
 
 
 
@@ -138,3 +145,4 @@ if __name__==("__main__"):
     carre(30)
 
     turtle.clearscreen()
+
