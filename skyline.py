@@ -3,16 +3,17 @@ import esthetique
 import random
 
 class building:
-    def __init__(self,largeur,hauteur,couleur,x,y):  #couleur est une liste 
+    def __init__(self,largeur,hauteur,couleur,x,y,typeb):  #couleur est une liste 
         self.largeur = largeur
         self.hauteur = hauteur
         self.couleur = couleur
         self.x = x #coin supérieur gauche
         self.y = y
+        self.typeb = typeb
      
     
     def dessine_mur_porteurs(self):
-        formes.Rectangle(self.x,self.y,self.largeur,self.hauteur).dessine().colorier(self.couleur["building"])
+        formes.Rectangle(self.x,self.y,self.largeur,self.hauteur).dessine().colorier(self.couleur[typeb])
         return self
 
     def creation_fenetre(self):
@@ -33,4 +34,16 @@ def main():
     for i in range(5): #on crée les tours de derriere, il faudra voir combien on en met
         couleurs = esthetique.choix_couleur()
         largeur,hauteur = random.randint(150,250),random.randint(350,550)
-        building(largeur,hauteur,couleurs,x,y).dessine_mur_porteurs().creation_fenetre().ajout_toit()
+        building(largeur,hauteur,couleurs,x,y,"building").dessine_mur_porteurs().creation_fenetre().ajout_toit()
+        x+=largeur
+    for i in range(5):
+        couleurs = esthetique.choix_couleur()
+        largeur,hauteur = random.randint(),random.randint() #changer les valeurs
+        building(largeur,hauteur,x,y,couleurs,x,y,"bureaux").dessine_mur_porteurs().creation_fenetre().ajout_toit()
+        x+=largeur
+
+    for i in range(5):
+        couleurs = esthetique.choix_couleur()
+        largeur,hauteur = random.randint(),random.randint() #changer les valeurs
+        building(largeur,hauteur,x,y,couleurs,x,y,"habitation").dessine_mur_porteurs().creation_fenetre().ajout_toit()
+        x+=largeur
