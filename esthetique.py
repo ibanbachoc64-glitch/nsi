@@ -1,6 +1,6 @@
-import turtle
 import random
 import formes
+import turtle
 
 def couleur_hex():
     col = random.randrange(2,2**24)
@@ -9,6 +9,7 @@ def couleur_hex():
 def choix_couleur():
     return{
     "fenetres" : ["#FFD166","#BFC7CE","#4A90E2","#A7C7E7"],
+    "toits" : ["#2C2C2C","#1B263B","#0D1B2A","#3E4C59","#2F1C1C","#2C3E50"],
     "building" : random.choice(["#1E1E1E","#E5E5E5","#4B4E57","#C0C5CE"]),
     "bureaux" : random.choice(["#D8D2C2","#B8A99A","#5DA9C5","#9FA6B2"]),
     "habitation" : random.choice(["#8B3A3A","#F5E6D3","#A0522D","#A3B18A"])}
@@ -72,8 +73,42 @@ class fenetres:
         x,y = self.x+demarc_hor+(l/2),self.y-demarc_vert
         for i in range(nbfen_vert):
             for j in range(nbfenhor):
-                formes.Rectangle(x,y,l,h).dessine().colorier()
+                formes.Rectangle(x,y,l,h).dessine().colorier(couleur_fenetres)
                 X+=demarc_hor
             x= self.x+demarc_hor+(l/2),self.y-demarc_vert
             y-=h+demarc_vert
     
+
+class toit1:
+    def __init__(self,largeur,x,y,couleur):   #je ne sais pas encore à quoi correspondent les x et y demander a iban
+        self.largeur = largeur
+        self.x,self.y = x,y
+        self.couleur = couleur
+        choix_h = [self.largeur/4,self.largeur/3,self.largeur/6,self.largeur/2]
+        self.hauteur = random.choice(choix_h)
+
+    def dessine(self):
+            formes.trait(self.x,self.y,self.x + self.largeur ,self.y)
+            formes.trait(self.x+self.largeur, self.y, self.x + self.largeur/2, self.y + self.hauteur)
+            formes.trait(self.x+self.largeur/2, self.y + self.hauteur, self.x, self.y)
+
+
+    def coloriert(self):
+            couleur = random.choice(self.couleur)  #c'est la liste des couleurs de toits, on en choisit un 
+            turtle.fillcolor(couleur)
+            turtle.begin_fill()
+            toit1(self.x,self.y,self.largeur,self.hauteur/2)
+            turtle.end_fill()
+
+class toit2:
+    def __init__(self,x,y,largeur,couleur):
+        self.x,self.y = x,y
+        self.largeur = largeur
+        self.couleur = couleur
+    def dessine(self):
+            turtle.penup()
+            turtle.goto(self.x,self.y)
+            turtle.pendown()
+            turtle.setheading(90)
+            turtle.circle(-self.largeur/2, 180)
+            turtle.setheading(0)
