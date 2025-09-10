@@ -41,6 +41,7 @@ class fenetres:
                 for j in range(nbfenhor):
                     formes.Rectangle(x,y,largeur_f,hauteur_f).dessine().colorier(couleur_fenetres)
                     x+=demarcation
+                x=self.x+ecart_barres+largeur_barre/2+demarcation+largeur_f/2
                 y-=hauteur_f+demarcation #a chaque fois que l'on a rempli une ligne, on descend de la hauteur de la fenetre+demarcation
         else:
             pass #check des erreurs
@@ -62,4 +63,7 @@ class fenetres:
         for i in range(nbfen_vert):
             for j in range(nbfenhor):
                 formes.Rectangle(x,y,l,h).dessine().colorier()
+                X+=demarc_hor
+            x= self.x+demarc_hor+(l/2),self.y-demarc_vert
+            y-=h+demarc_vert
     
