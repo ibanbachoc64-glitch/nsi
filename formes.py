@@ -57,15 +57,6 @@ class Rectangle:
 
 
 
-"""def grille(largeur,hauteur):
-        for i in range:
-            if largeur -10*i %i != 0:
-               nb_colonnes = i            #les -10 sont des valeurs hypothétiques, il faudra par la suite les remplacer par de vraies valeurs
-            if hauteur - 10*i %i != 0:      #les -10 correspondent à longueur barre/2
-               nb_lignes = i
-        return nb_colonnes,nb_lignes"""
-
-
 def divise_coord(val_divise,nb_divise):
     if val_divise !=0:
         return val_divise/nb_divise
