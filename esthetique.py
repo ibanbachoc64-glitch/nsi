@@ -1,7 +1,7 @@
 import turtle
 import random
 from formes import *
-
+import time
 
 def choix_couleur():
     return{
@@ -19,8 +19,6 @@ def colorier_rectangle(x,y,couleur,largeur,hauteur):
     rectangle(x,y,largeur,hauteur)
 
     turtle.end_fill()
-
-
 
 def colorier_toit1(x,y,couleur,largeur,hauteur):
 
@@ -43,8 +41,17 @@ def colorier_toit2(x,y,largeur,couleur):
 
     turtle.end_fill()
 
+def colorier_toit3(x,y,couleur,largeur,hauteur):
+
+    turtle.fillcolor(couleur)
+    turtle.begin_fill()
+
+    toit3(x,y,largeur,hauteur/2)
+
+    turtle.end_fill()
+
 def choixtoit():
-    return random.randint(1,2)
+    return random.randint(3,3)
 
 
 
@@ -69,5 +76,56 @@ def building(x,y):
 
         colorier_toit2(x,y,largeur,couleur['building'])
 
+    else: #♠ c'est le 3
 
+        colorier_toit3(x,y,couleur['building'],largeur,hauteur)
+
+
+if __name__==("__main__"):
+
+    #en haut a gauche
+    colorier_toit1(-400,100,"#FFD166",100,50)
+    #en bas a gauche
+    colorier_toit1(-400,-100,"#FFD166",150,100)
+    #en haut a droite
+    colorier_toit1(400,100,"#FFD166",200,150)
+
+    time.sleep(2)
+    turtle.clearscreen()
+
+    position(-400,100)
+    #en haut a gauche
+    colorier_toit2(-400,100,100,"#FFD166",)
+
+    position(-400,-100)
+    #en bas a gauche
+    colorier_toit2(-400,-100,150,"#FFD166",)
+
+    position(400,100)
+    #en haut a droite
+    colorier_toit2(400,100,200,"#FFD166",)
+
+    time.sleep(2)
+    turtle.clearscreen()
+
+
+    position(-400,100)
+    #en haut a gauche
+    colorier_toit3(-400,100,"#FFD166",100,50)
+
+    position(-400,-100)
+    #en bas a gauche
+    colorier_toit3(-400,-100,"#FFD166",150,100)
+
+    position(400,100)
+    #en haut a droite
+    colorier_toit3(400,100,"#FFD166",300,150)
+
+    time.sleep(2)
+    turtle.clearscreen()
+
+    for i in range(3):
+        building(0,0)
+        time.sleep(1)
+        turtle.clearscreen()
 
