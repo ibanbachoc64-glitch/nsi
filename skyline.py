@@ -3,7 +3,7 @@ import esthetique
 import random
 
 class building:
-    def __init__(self,largeur,hauteur,couleur,x,y,typeb):  #couleur est une liste 
+    def __init__(self,largeur,hauteur,couleur,x,y,typeb):  #couleur est un dict 
         self.largeur = largeur
         self.hauteur = hauteur
         self.couleur = couleur
@@ -49,3 +49,4 @@ def main():
         largeur,hauteur = random.randint(),random.randint() #changer les valeurs
         building(largeur,hauteur,x,y,couleurs,x,y,"habitation").dessine_mur_porteurs().creation_fenetre().ajout_toit()
         x+=largeur
+
