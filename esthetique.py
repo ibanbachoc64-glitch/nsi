@@ -91,6 +91,7 @@ class toit1:
             formes.trait(self.x,self.y,self.x + self.largeur ,self.y)
             formes.trait(self.x+self.largeur, self.y, self.x + self.largeur/2, self.y + self.hauteur)
             formes.trait(self.x+self.largeur/2, self.y + self.hauteur, self.x, self.y)
+            return self
 
 
     def coloriert(self):
@@ -112,3 +113,50 @@ class toit2:
             turtle.setheading(90)
             turtle.circle(-self.largeur/2, 180)
             turtle.setheading(0)
+            return self
+    def colorie(self):
+        couleur = random.choice(self.couleur)
+        turtle.fillcolor(couleur)
+        turtle.begin_fill()
+
+        toit2(self.x,self.y,self.largeur)
+        turtle.end_fill()
+
+class toit3:
+    def __init__(self,x,y,hauteur,largeur,couleur):
+        self.x,self.y = x,y
+        self.hauteur = hauteur
+        self.couleur = couleur
+        self.largeur= largeur
+
+    def dessine(self,hauteur):
+        nombre_marches =  4
+        largeur_marche = self.largeur / (nombre_marches * 2)
+        hauteur_marche = hauteur / nombre_marches
+        x,y = self.x,self.y
+        #on monte a gauche
+        for i in range(nombre_marches):
+
+            formes.trait(x, y, x + largeur_marche, y)
+            x += largeur_marche
+
+            formes.trait(x, y, x, y + hauteur_marche)
+            y += hauteur_marche
+        #on descend a droite
+        for i in range(nombre_marches):
+
+            formes.trait(x, y, x, y - hauteur_marche)
+            y -= hauteur_marche
+
+            formes.trait(x, y, x + largeur_marche, y)
+            x += largeur_marche
+        return self
+    
+    def colorie(self):
+        couleur = random.choice(self.couleur)
+        turtle.fillcolor(couleur)
+        turtle.begin_fill()
+
+        self.dessine(self.hauteur/2)
+
+        turtle.end_fill()
