@@ -94,7 +94,7 @@ class toit1:
             return self
 
 
-    def coloriert(self):
+    def colorie(self):
             couleur = random.choice(self.couleur)  #c'est la liste des couleurs de toits, on en choisit un 
             turtle.fillcolor(couleur)
             turtle.begin_fill()
@@ -123,9 +123,10 @@ class toit2:
         turtle.end_fill()
 
 class toit3:
-    def __init__(self,x,y,hauteur,largeur,couleur):
+    def __init__(self,x,y,hauteurbd,largeur,couleur):
         self.x,self.y = x,y
-        self.hauteur = hauteur
+        self.hauteurbd = hauteurbd
+        self.hauteur = hauteurbd/4 #valeur provisoire
         self.couleur = couleur
         self.largeur= largeur
 

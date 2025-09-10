@@ -1,4 +1,4 @@
-from formes import *
+import formes
 import esthetique
 import random
 
@@ -12,37 +12,21 @@ class building:
      
     
     def dessine_mur_porteurs(self):
-        rectangle(self.x,self.y,self.largeur,self.hauteur)
-    
-    def peinture_murs(self):
-        esthetique.colorier_rectangle(self.x,self.y,self.couleur["building"],self.largeur,self.hauteur)
-
-    def peinture_fenetre(self,x,y,largeur,hauteur):
-        esthetique.colorier_rectangle(x,y,random.choice(self.couleur["fenetres"]),largeur,hauteur)
+        formes.Rectangle(self.x,self.y,self.largeur,self.hauteur).dessine().colorier(self.couleur["building"])
+        return self
 
     def creation_fenetre(self):
-        col,lig = grille(self.largeur,self.hauteur)
-        type_fenetre = random.randint(1,3)
-        match type_fenetre:  #cette structure a été trouvée sur w3schools.com, avec pour recherche initiale une structure de type switch en c et en go (non existente en python)
-            case 1:
-                #la baie vitrée
-                pass
-            case 2:
-                print("fenetre 2, la miriade.")
-            case 3:
-                esthetique.fenetre_barres()
+        esthetique.fenetres(self.hauteur,self.x,self.y,self.couleur["fenetres"]).dessine()
+        return self
 
     def ajout_toit(self):
-        type_toit = random.randint(0,3)
-        match type_toit: #changer vers des if elif car python ne prend pas match
-            case 0:
-                pass #on laisse un building rectangulaire
-            case 1:
-                toit1()  #changer les arguments
-            case 2:
-                toit2() #changer les args
-            case 3:
-                toit3() #changer les args
+        typetoit = random.randint(1,3)
+        if typetoit == 1:
+            esthetique.toit1(self.largeur,self.x,self.y,self.couleur["toits"]).dessine().colorie()
+        elif typetoit==2:
+            esthetique.toit2(self.x,self.y,self.largeur,self.couleur["toits"]).dessine().colorie()
+        elif typetoit==3:
+            esthetique.toit3(self.x,self.y,self.hauteur,self.largeur,self.couleur["toits"])
 
 def main():
     x = 0
