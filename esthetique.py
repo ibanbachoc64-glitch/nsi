@@ -40,12 +40,19 @@ class fenetres:
             for i in range(nbfenvert):
                 for i in range(nbfenhor):
                     formes.Rectangle(x,y,largeur_f,hauteur_f).dessine().colorier_rectangle(couleur_fenetres)
+                    x+=demarcation
+                y-=hauteur_f+demarcation #a chaque fois que l'on a rempli une ligne, on descend de la hauteur de la fenetre+demarcation
         else:
             pass #check des erreurs
 
     def baies_vitrees(self,couleur_baie):
-        pass
-
+        hauteur_f,largeur_f = self.hauteurbd/25,(6/8)*self.largeurbd
+        joint = hauteur_f/5
+        nbfen = formes.nb_fenetres(self.hauteurbd,hauteur_f,joint)
+        y= self.hauteurbd-joint
+        for i in range(nbfen):
+            formes.Rectangle(self.x+(self.largeurbd/2)-largeur_f,y,largeur_f,hauteur_f).dessine().colorier_rectangle(couleur_baie)
+            y-= hauteur_f+joint
     def miriade_fenetres(self,couleur_fenetres):
         pass
     
