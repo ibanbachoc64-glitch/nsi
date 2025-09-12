@@ -12,7 +12,6 @@ def choix_couleur():
 
 
 def colorier_rectangle(x,y,couleur,largeur,hauteur):
-
     turtle.fillcolor(couleur)
     turtle.begin_fill()
 
@@ -21,19 +20,14 @@ def colorier_rectangle(x,y,couleur,largeur,hauteur):
     turtle.end_fill()
 
 def colorier_toit1(x,y,couleur,largeur,hauteur):
-
-
     turtle.fillcolor(couleur)
     turtle.begin_fill()
 
     toit1(x,y,largeur,hauteur/2)
 
-
     turtle.end_fill()
 
 def colorier_toit2(x,y,largeur,couleur):
-
-
     turtle.fillcolor(couleur)
     turtle.begin_fill()
 
@@ -42,7 +36,6 @@ def colorier_toit2(x,y,largeur,couleur):
     turtle.end_fill()
 
 def colorier_toit3(x,y,couleur,largeur,hauteur):
-
     turtle.fillcolor(couleur)
     turtle.begin_fill()
 
@@ -66,18 +59,10 @@ def building(x,y):
     colorier_rectangle(x,y,couleur['building'],largeur,hauteur)
 
     if choix == 1:
-
-
         colorier_toit1(x,y,couleur['building'],largeur,hauteur)
-
-
-
     elif choix == 2:
-
         colorier_toit2(x,y,largeur,couleur['building'])
-
-    else: #♠ c'est le 3
-
+    else: # c'est le 3
         colorier_toit3(x,y,couleur['building'],largeur,hauteur)
 
 
@@ -128,4 +113,5 @@ if __name__==("__main__"):
         building(0,0)
         time.sleep(1)
         turtle.clearscreen()
+
 
