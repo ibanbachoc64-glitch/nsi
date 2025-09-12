@@ -12,6 +12,7 @@ def choix_couleur():
 
 
 def colorier_rectangle(x,y,couleur,largeur,hauteur):
+
     turtle.fillcolor(couleur)
     turtle.begin_fill()
 
@@ -19,99 +20,93 @@ def colorier_rectangle(x,y,couleur,largeur,hauteur):
 
     turtle.end_fill()
 
-def colorier_toit1(x,y,couleur,largeur,hauteur):
-    turtle.fillcolor(couleur)
-    turtle.begin_fill()
 
-    toit1(x,y,largeur,hauteur/2)
-
-    turtle.end_fill()
-
-def colorier_toit2(x,y,largeur,couleur):
-    turtle.fillcolor(couleur)
-    turtle.begin_fill()
-
-    toit2(x,y,largeur)
-
-    turtle.end_fill()
-
-def colorier_toit3(x,y,couleur,largeur,hauteur):
-    turtle.fillcolor(couleur)
-    turtle.begin_fill()
-
-    toit3(x,y,largeur,hauteur/2)
-
-    turtle.end_fill()
-
-def choixtoit():
-    return random.randint(3,3)
+def choix_toit():
+    return random.randint(1,3)
 
 
+def colorier_toit(x,y,couleur,largeur,hauteur, choix):
+    '''
+    x,y = int = coords
+    largeur = int = largeur rectangle
+    hauteur = int = hauteur rectangle
+    couleur = str = couleur du building et du toit
+    choix = int = choix du type de toit
+    '''
 
-def building(x,y):
-    position(-200,0)
+
+    if choix == 1:
+        turtle.fillcolor(couleur)
+        turtle.begin_fill(x,y,largeur,hauteur/2)
+
+        toit1()
+
+        turtle.end_fill()
+
+    if choix == 2:
+
+        turtle.fillcolor(couleur)
+        turtle.begin_fill()
+
+        toit2(x,y,largeur)
+
+        turtle.end_fill()
+
+    else:
+
+        turtle.fillcolor(couleur)
+        turtle.begin_fill()
+
+        toit3(x,y,largeur,hauteur/2)
+
+        turtle.end_fill()
+
+
+
+
+
+def building(x,y, largeur, hauteur, couleur,choix):
+    '''
+    x,y = int = coords
+    largeur = int = largeur rectangle
+    hauteur = int = hauteur rectangle
+    couleur = str = couleur du building et du toit
+    choix = int = choix du type de toit
+    '''
+
+    colorier_rectangle(x,y,couleur,largeur,hauteur)
+    colorier_toit(x,y,couleur, largeur, hauteur,choix)
+
+
+
+
+
+#building(0,0,100,50, "#FFD166", 3)
+
+
+def main(x,y,n):
+
+    '''
+    creer la ligne de building, qui demarre en x y, prend aussi en parametre le plan n.
+    x = int = coords x
+    y = int = coords y
+    n = int = numero du plan
+    '''
+
+    position(x,y)
+
     largeur = random.randint(50,100)
     hauteur = random.randint(50,150)
 
-    choix = choixtoit()
     couleur = choix_couleur()
+    choix = choix_toit()
 
-    colorier_rectangle(x,y,couleur['building'],largeur,hauteur)
+    building(x,y,largeur,hauteur,couleur['building'],choix)
 
-    if choix == 1:
-        colorier_toit1(x,y,couleur['building'],largeur,hauteur)
-    elif choix == 2:
-        colorier_toit2(x,y,largeur,couleur['building'])
-    else: # c'est le 3
-        colorier_toit3(x,y,couleur['building'],largeur,hauteur)
+main(-200,0,1)
 
 
 if __name__==("__main__"):
 
-    #en haut a gauche
-    colorier_toit1(-400,100,"#FFD166",100,50)
-    #en bas a gauche
-    colorier_toit1(-400,-100,"#FFD166",150,100)
-    #en haut a droite
-    colorier_toit1(400,100,"#FFD166",200,150)
-
-    time.sleep(2)
-    turtle.clearscreen()
-
-    position(-400,100)
-    #en haut a gauche
-    colorier_toit2(-400,100,100,"#FFD166",)
-
-    position(-400,-100)
-    #en bas a gauche
-    colorier_toit2(-400,-100,150,"#FFD166",)
-
-    position(400,100)
-    #en haut a droite
-    colorier_toit2(400,100,200,"#FFD166",)
-
-    time.sleep(2)
-    turtle.clearscreen()
-
-
-    position(-400,100)
-    #en haut a gauche
-    colorier_toit3(-400,100,"#FFD166",100,50)
-
-    position(-400,-100)
-    #en bas a gauche
-    colorier_toit3(-400,-100,"#FFD166",150,100)
-
-    position(400,100)
-    #en haut a droite
-    colorier_toit3(400,100,"#FFD166",300,150)
-
-    time.sleep(2)
-    turtle.clearscreen()
-
-    for i in range(3):
-        building(0,0)
-        time.sleep(1)
-        turtle.clearscreen()
-
+    pass
 
