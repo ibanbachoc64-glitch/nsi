@@ -95,28 +95,40 @@ def toit3(x_base, y_base, largeur, hauteur):
     nombre_marches =  4
     largeur_marche = largeur / (nombre_marches * 2)
     hauteur_marche = hauteur / nombre_marches
-    
+
+
     x = x_base
     y = y_base
 
     #on monte a gauche
     for i in range(nombre_marches):
-        trait(x, y, x + largeur_marche, y)
-        x += largeur_marche
-        
-        trait(x, y, x, y + hauteur_marche)
-        y += hauteur_marche
-        
-    #on descend a droite
-    for i in range(nombre_marches):
-        trait(x, y, x, y - hauteur_marche)
-        y -= hauteur_marche
-        
+
         trait(x, y, x + largeur_marche, y)
         x += largeur_marche
 
+        trait(x, y, x, y + hauteur_marche)
+        y += hauteur_marche
+
+    #on descend a droite
+    for i in range(nombre_marches):
+
+        trait(x, y, x, y - hauteur_marche)
+        y -= hauteur_marche
+
+        trait(x, y, x + largeur_marche, y)
+        x += largeur_marche
+
+
+
+
+
+
+
+
 if __name__==("__main__"):
     #test toit1
+
+
     #en haut a gauche
     toit1(-400,200,50,25)
 
@@ -130,6 +142,8 @@ if __name__==("__main__"):
     turtle.clearscreen()
 
     #test toit2
+
+
     #en haut a gauche
     toit2(-400,200,50)
 
@@ -142,7 +156,10 @@ if __name__==("__main__"):
     time.sleep(2)
     turtle.clearscreen()
 
+
+
     #test toit3
+
     #en haut a gauche
     toit3(-400,200,50,25)
 
@@ -157,6 +174,7 @@ if __name__==("__main__"):
 
 
     #test rectangle
+
     #en haut a gauche
     rectangle(-400,200,50,25)
 
@@ -178,6 +196,5 @@ if __name__==("__main__"):
 
     #en haut a droite
     carre(400,200,150)
-
 
 
