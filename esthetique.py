@@ -37,13 +37,13 @@ def colorier_toit(x,y,couleur,largeur,hauteur, choix):
 
     if choix == 1:
         turtle.fillcolor(couleur)
-        turtle.begin_fill(x,y,largeur,hauteur/2)
+        turtle.begin_fill()
 
-        toit1()
+        toit1(x,y,largeur,hauteur/2)
 
         turtle.end_fill()
 
-    if choix == 2:
+    elif choix == 2:
 
         turtle.fillcolor(couleur)
         turtle.begin_fill()
@@ -60,6 +60,7 @@ def colorier_toit(x,y,couleur,largeur,hauteur, choix):
         toit3(x,y,largeur,hauteur/2)
 
         turtle.end_fill()
+
 
 
 
@@ -109,4 +110,5 @@ main(-200,0,1)
 if __name__==("__main__"):
 
     pass
+
 
