@@ -1,4 +1,4 @@
-import turtle 
+import turtle;import math
 #les docstr sont faites avec l'extension autodocstr de python sur vsc
 
 def trait(xdebut,ydebut,xfin,yfin):
@@ -11,6 +11,9 @@ def trait(xdebut,ydebut,xfin,yfin):
         yfin (int): ordonnée de fin du trait
     """
     crayon = turtle.Turtle()
+    crayon.speed(0)
+    crayon.shape("classic")
+    crayon.shape("blank")
     crayon.penup()
     crayon.goto(xdebut,ydebut)
     crayon.pendown()
@@ -41,29 +44,23 @@ class Rectangle:
         trait(self.xdebut, self.ydebut - self.hauteur, self.xdebut, self.ydebut)
         return self
 
-    def colorier(self,couleur):
+    def colorier(self, couleur):
         turtle.penup()
-        turtle.goto(self.xdebut,self.ydebut)
+        turtle.goto(self.xdebut, self.ydebut)
         turtle.pendown()
         turtle.fillcolor(couleur)
-        turtle.beginfill()
-        for i in range(2):
-            turtle.fd(self.largeur)
+        turtle.begin_fill()
+        for _ in range(2):
+            turtle.forward(self.largeur)
             turtle.right(90)
-            turtle.fd(self.hauteur)
+            turtle.forward(self.hauteur)
             turtle.right(90)
         turtle.end_fill()
 
 
 
 
-def divise_coord(val_divise,nb_divise):
-    if val_divise !=0:
-        return val_divise/nb_divise
-    return 0
-
-def nb_fenetres(val,taille_fenetre,ecart):
-    v = val/taille_fenetre
-    return val/v*ecart
-
-Rectangle(0,0,100,200).dessine()
+def nbfenetre(t, t_f, demarcation):
+    if t_f <= 0:
+        return 0  
+    return math.floor((t + demarcation) / (t_f + demarcation))
