@@ -41,7 +41,7 @@ class Fenetres:
     def fenetre_barres(self,couleur_barres,couleur_fenetres):
         ecart_barres = self.largeurbd/3
         largeur_barre = self.largeurbd/5
-        largeur_f = self.largeurbd/4
+        largeur_f = self.largeurbd/5
         hauteur_f = largeur_f *1.5
         demarcation = hauteur_f/5
         formes.Rectangle(self.x+ecart_barres-(largeur_barre)/2,self.y,largeur_barre,self.hauteurbd).dessine().colorier(couleur_barres)
@@ -176,3 +176,4 @@ class toit3:
         self.dessine() 
         turtle.end_fill()
         return self
+
